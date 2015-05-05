@@ -1,0 +1,44 @@
+{
+  "name": "@yuzu/yep-errors",
+  "version": "1.0.0",
+  "author": "YuzuJS",
+  "description": "yep-errors",
+  "dependencies": {
+    "q": "~0.9.7",
+  },
+  "devDependencies": {
+    "6to5": "^2.13.1",
+    "chai": ">= 1.0.4",
+    "chai-as-promised": "^4.1.1",
+    "jshint": ">= 0.7.1",
+    "mocha": ">= 1.1.0",
+    "sinon": ">= 1.3.4",
+    "sinon-chai": ">= 2.1.0"
+  },
+  "_chalkInterfaceDependencies": [
+    "app-dialog",
+    "app-localization",
+    "app-logger"
+  ],
+  "scripts": {
+    "lint": "jshint lib",
+    "test": "mocha test --recursive",
+    "githooks": "cp pre-* ./.git/hooks"
+  },
+  "private": true,
+  "contributors": [
+    {
+      "name": "Paul Bouzakis",
+      "email": "github@paulbouzakis.com",
+      "url": "http://paulbouzakis.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YuzuJS/yep-errors.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YuzuJS/yep-errors/issues"
+  },
+  "homepage": "https://github.com/YuzuJS/yep-errors"
+}
