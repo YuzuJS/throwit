@@ -16,6 +16,7 @@
     "sinon-chai": ">= 2.1.0"
   },
   "_chalkInterfaceDependencies": [
+    "app-enums",
     "app-dialog",
     "app-localization",
     "app-logger"
