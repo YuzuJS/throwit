@@ -29,17 +29,16 @@
     "app-logger"
   ],
   "scripts": {
-    "lint": "jshint lib",
+    "lint": "jshint index.js lib test",
     "test": "mocha test --recursive",
     "githooks": "cp pre-* ./.git/hooks"
   },
-  "contributors": [
-    {
-      "name": "Paul Bouzakis",
-      "email": "github@paulbouzakis.com",
-      "url": "http://paulbouzakis.com"
-    }
-  ],
+  "author": "Paul Bouzakis <pbouzakis@yuzu.com>",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YuzuJS/auth.git"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/YuzuJS/yep-errors.git"
