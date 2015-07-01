@@ -1,3 +1,5 @@
+/*jshint expr: true */
+
 import Enum from "enumit";
 import YepError from "../lib/YepError";
 
@@ -39,7 +41,7 @@ describe("YepError", function () {
 
         it("should output to the proper string representation", () => {
             String(this.error).should.equal("Error 101");
-        })
+        });
 
         it("should be an `YepError`", () => {
             YepError.isYepError(this.error).should.be.true;
@@ -130,7 +132,7 @@ describe("YepError", function () {
 
         it("should output to the proper string representation", () => {
             String(this.error).should.equal("Error 5002");
-        })
+        });
 
         it("should be a `CustomError`", () => {
             this.CustomError.isCustomError(this.error).should.be.true;
