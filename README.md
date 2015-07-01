@@ -1,5 +1,6 @@
 # Yep Errors
 Yep, all the errors.
+[See Our Docs!](doc/index.md).
 
 ## More Errors
 The best errors in town!
