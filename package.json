@@ -1,6 +1,6 @@
 {
   "name": "@yuzu/yep-errors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "YuzuJS",
   "description": "yep-errors",
   "dependencies": {
@@ -30,7 +30,7 @@
     "app-logger"
   ],
   "scripts": {
-    "lint": "jshint lib test",
+    "lint": "jshint index.js lib test",
     "test": "mocha test --recursive",
     "githooks": "cp pre-* ./.git/hooks"
   },
