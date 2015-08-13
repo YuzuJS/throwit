@@ -138,4 +138,51 @@ describe("YepError", function () {
             this.CustomError.isCustomError(this.error).should.be.true;
         });
     });
+
+    describe("when creating an YepError w/ an Error", () => {
+        beforeEach(() => {
+            this.originalError = new Error("Error message!");
+            this.error = new YepError(this.originalError);
+        });
+
+        it("should be an UNKNOWN error", () => {
+            this.error.code.should.eql(UNKNOWN);
+        });
+
+        it("should have a message the same as the key`s/original error's", () => {
+            this.error.message.should.equal(this.originalError.message);
+        });
+
+        it("should have empty details", () => {
+            this.error.details.should.eql({});
+        });
+
+        it("should be a YepError", () => {
+            YepError.isYepError(this.error, "UNKNOWN").should.be.true;
+        });
+    });
+
+    describe("when creating an YepError w/ an Error and opts", () => {
+        beforeEach(() => {
+            this.originalError = new Error("Error message!");
+            this.errorOpts = { message: "Horrible error!", details: { isFatal: false } };
+            this.error = new YepError(this.originalError, this.errorOpts);
+        });
+
+        it("should be an UNKNOWN error", () => {
+            this.error.code.should.eql(UNKNOWN);
+        });
+
+        it("should have a message the same as the key`s/original error's", () => {
+            this.error.message.should.equal(this.originalError.message);
+        });
+
+        it("should have the correct details", () => {
+            this.error.details.should.eql(this.errorOpts.details);
+        });
+
+        it("should be a YepError", () => {
+            YepError.isYepError(this.error, "UNKNOWN").should.be.true;
+        });
+    });
 });
