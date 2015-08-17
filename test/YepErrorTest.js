@@ -139,7 +139,7 @@ describe("YepError", function () {
         });
     });
 
-    describe("when creating an YepError w/ an Error", () => {
+    describe("when creating an YepError w/ an Error w/o opts", () => {
         beforeEach(() => {
             this.originalError = new Error("Error message!");
             this.error = new YepError(this.originalError);
@@ -153,8 +153,9 @@ describe("YepError", function () {
             this.error.message.should.equal(this.originalError.message);
         });
 
-        it("should have empty details", () => {
-            this.error.details.should.eql({});
+        it("should have details with an `originalError` prop equal to error", () => {
+            this.error.details.should.have.property("originalError");
+            this.error.details.originalError.should.eql(this.originalError);
         });
 
         it("should be a YepError", () => {
