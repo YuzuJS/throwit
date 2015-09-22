@@ -46,6 +46,10 @@ describe("YepError", function () {
         it("should be an `YepError`", () => {
             YepError.isYepError(this.error).should.be.true;
         });
+
+        it("should have empty `_criticalCodes`", () => {
+            Array.isArray(this.error._criticalCodes).should.be.true;
+        });
     });
 
     describe("when creating an YepError w/ a key", () => {
@@ -98,10 +102,11 @@ describe("YepError", function () {
 
     describe("when extending YepError", () => {
         beforeEach(() => {
-            var Errors = new Enum("UNKNOWN", "DOH");
+            var Errors = new Enum("UNKNOWN", "DOH", "FOO", "BAR", "BAZ");
 
             class CustomError extends YepError {
                 get title() { return "CustomError"; }
+                get _criticalCodes() { return [Errors.DOH, Errors.BAZ]; }
                 static get groupCode() { return 5000; }
                 static get Errors() { return Errors; }
                 static isCustomError(err, key) {
@@ -112,6 +117,8 @@ describe("YepError", function () {
             this.CustomError = CustomError;
 
             this.error = new CustomError("DOH");
+            this.bazError = new CustomError("BAZ");
+            this.fooError = new CustomError("FOO");
         });
 
         it("should have the name `CustomError#DOH`", () => {
@@ -136,6 +143,12 @@ describe("YepError", function () {
 
         it("should be a `CustomError`", () => {
             this.CustomError.isCustomError(this.error).should.be.true;
+        });
+
+        it("should be a critical error after overriding `_criticalCodes`", () => {
+            this.error.isCritical.should.be.true;
+            this.bazError.isCritical.should.be.true;
+            this.fooError.isCritical.should.be.false;
         });
     });
 
