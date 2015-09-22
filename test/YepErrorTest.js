@@ -43,6 +43,10 @@ describe("YepError", function () {
             String(this.error).should.equal("Error 101");
         });
 
+        it("should output to the proper number representation", () => {
+            this.error.toNumber().should.equal(101);
+        });
+
         it("should be an `YepError`", () => {
             YepError.isYepError(this.error).should.be.true;
         });
@@ -123,6 +127,10 @@ describe("YepError", function () {
 
         it("should have the name `CustomError#DOH`", () => {
             this.error.name.should.equal("CustomError#DOH");
+        });
+
+        it("should output the number `5002`", () => {
+            this.error.toNumber().should.equal(5002);
         });
 
         it("should be a DOH CustomError", () => {
