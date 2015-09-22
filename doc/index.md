@@ -7,7 +7,7 @@ All `YepError`s should contain the following
 - `title` - The display name of the error class
 - `name` - Display name plus the error code. Used by uncaught error handling.
 - `message` - Same as regular old Error.
-- `details` - Provide more information about the origin of the error.
+- `details` - Very Useful! Provide more information about the origin of the error, and more details about what went wrong specifically. For example, when throwing an SSO Error, this might useful: ```{ details: type: "sso", ssoParts: { id, email, bearerToken }```
 - `code` - The enum value for the type of error. All errors should support unknown value.
 - static `Errors` enum - with each type of error created.
 - Support for `toString` to `Error XXX`.
