@@ -40,7 +40,7 @@ describe("YepError", function () {
         });
 
         it("should output to the proper string representation", () => {
-            String(this.error).should.equal("Error YepError#UNKNOWN");
+            String(this.error).should.equal("YepError#UNKNOWN");
         });
 
         it("should output to the proper number representation", () => {
@@ -146,7 +146,7 @@ describe("YepError", function () {
         });
 
         it("should output to the proper string representation", () => {
-            String(this.error).should.equal("Error CustomError#DOH");
+            String(this.error).should.equal("CustomError#DOH");
         });
 
         it("should be a `CustomError`", () => {
@@ -181,6 +181,10 @@ describe("YepError", function () {
 
         it("should be a YepError", () => {
             YepError.isYepError(this.error, "UNKNOWN").should.be.true;
+        });
+
+        it("should output the proper string", () => {
+            String(this.error).should.equal("YepError#UNKNOWN: " + this.originalError.message);
         });
     });
 
