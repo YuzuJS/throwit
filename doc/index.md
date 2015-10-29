@@ -26,3 +26,37 @@ When extending YepError you must provide the following
 - static `isMyCustomError` method.
 - override the title property.
 - If you have critical codes, override the `_criticalCodes` property.
+
+## Decorator
+
+To create a new error class, use our new decorator for ease of use and to ensure that we keep track of all the errors in our system. For a good example of how to use the decorator check out our AuthError Class:
+
+``` js
+import { YepError } from "@yuzu/yep-errors";
+import Enum from "enumit";
+
+const GROUP_CODE = 200;
+
+var Errors = new Enum("UNKNOWN",
+                      "INVALID_CREDENTIALS", "INVALID_TOKEN", "MISSING_TOKEN_FIELDS",
+                      "SIGN_IN_CONFLICT", "SESSION_SUSPENDED", "NOT_AUTHENTICATED");
+
+@YepError.register(GROUP_CODE, { title: "AuthError", Errors })
+export default class AuthError extends YepError {
+    // any additional custom methods unique to this class can live here
+}
+```
+
+The only things we need to give our decorator is a group code, a title, and our error options as an enum. From there the decorator will generate a whole host of lovely methods as seen in the example below:
+
+``` js
+    AuthError.groupCode // returns 200
+    AuthError.Errors // returns the enum above ("UNKNOWN", "INVALID_CREDENTIALS"...);
+
+    var pretendError = new AuthError("INVALID_CREDENTIALS");
+
+    pretendError.title // returns "AuthError"
+    AuthError.isAuthError(pretendError) // returns true
+```
+
+In addition to ease of use, the decorator memoizes all error classes, which can be referenced with the YepErrors.allErrors getter function and can be easily seen by going to the following route in your url bar: http://mdr.localtest.me:9000/#/errors
