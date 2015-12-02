@@ -1,5 +1,3 @@
-/*jshint expr: true */
-
 import Enum from "enumit";
 import YepError from "../lib/YepError";
 
