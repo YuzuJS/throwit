@@ -1,6 +1,6 @@
 {
   "name": "@yuzu/yep-errors",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": "YuzuJS",
   "description": "yep-errors",
   "dependencies": {
@@ -24,12 +24,6 @@
       ]
     ]
   },
-  "_chalkInterfaceDependencies": [
-    "app-enums",
-    "app-dialog",
-    "app-localization",
-    "app-logger"
-  ],
   "scripts": {
     "lint": "eslint -c ./node_modules/@yuzu/yep-eslint-config/.eslintrc .",
     "test": "mocha test --recursive",
@@ -37,10 +31,6 @@
   },
   "author": "Paul Bouzakis <pbouzakis@yuzu.com>",
   "contributors": [],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/YuzuJS/auth.git"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/YuzuJS/yep-errors.git"
