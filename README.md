@@ -1,9 +1,6 @@
-# Yep Errors
-Yep, all the errors.
+# @yuzu/yep-errors
+Provides consistent API for yep-app projects.
 [See Our Docs!](doc/index.md).
-
-## More Errors
-The best errors in town!
 
 ### Githooks
 
