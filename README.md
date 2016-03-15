@@ -1,5 +1,5 @@
-# @yuzu/yep-errors
-Provides consistent API for yep-app projects.
+# throwit
+Provides consistent and base error class.
 [See Our Docs!](doc/index.md).
 
 ### Githooks

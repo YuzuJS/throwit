@@ -1,8 +1,7 @@
 {
-  "name": "@yuzu/yep-errors",
+  "name": "throwit",
   "version": "0.5.2",
-  "author": "YuzuJS",
-  "description": "yep-errors",
+  "description": "A standard and base error class.",
   "dependencies": {
     "q": "^1.4.1",
     "enumit": ">= 0.1.2"
@@ -29,7 +28,7 @@
     "test": "mocha test --recursive",
     "githooks": "cp pre-* ./.git/hooks"
   },
-  "author": "Paul Bouzakis <pbouzakis@yuzu.com>",
+  "author": "Paul Bouzakis <npm@paulbouzakis.com>",
   "contributors": [],
   "repository": {
     "type": "git",

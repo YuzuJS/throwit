@@ -1,2 +1,2 @@
-import YepError from "./lib/YepError";
-export { YepError };
+import TError from "./lib/TError";
+export { TError };

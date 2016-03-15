@@ -1,31 +1,31 @@
 import Enum from "enumit";
-import YepError from "../lib/YepError";
+import TError from "../lib/TError";
 
-describe("YepError", function () {
-    var { UNKNOWN } = YepError.Errors;
+describe("TError", function () {
+    var { UNKNOWN } = TError.Errors;
 
     it("exposes an UNKNOWN error codes", () => {
-        YepError.Errors.should.ownProperty("UNKNOWN");
+        TError.Errors.should.ownProperty("UNKNOWN");
     });
 
     it("belongs to a group code", () => {
-        YepError.groupCode.should.equal(100);
+        TError.groupCode.should.equal(100);
     });
 
-    describe("when creating an YepError w/o parameters", () => {
+    describe("when creating an TError w/o parameters", () => {
         beforeEach(() => {
-            this.error = new YepError();
+            this.error = new TError();
         });
 
-        it("should have the title `YepError`", () => {
-            this.error.title.should.equal("YepError");
+        it("should have the title `TError`", () => {
+            this.error.title.should.equal("TError");
         });
 
-        it("should have the name `YepError#UNKNOWN`", () => {
-            this.error.name.should.equal("YepError#UNKNOWN");
+        it("should have the name `TError#UNKNOWN`", () => {
+            this.error.name.should.equal("TError#UNKNOWN");
         });
 
-        it("should be an UNKNOWN YepError", () => {
+        it("should be an UNKNOWN TError", () => {
             this.error.code.should.eql(UNKNOWN);
         });
 
@@ -38,15 +38,15 @@ describe("YepError", function () {
         });
 
         it("should output to the proper string representation", () => {
-            String(this.error).should.equal("YepError#UNKNOWN");
+            String(this.error).should.equal("TError#UNKNOWN");
         });
 
         it("should output to the proper number representation", () => {
             this.error.toNumber().should.equal(101);
         });
 
-        it("should be an `YepError`", () => {
-            YepError.isYepError(this.error).should.be.true;
+        it("should be an `TError`", () => {
+            TError.isTError(this.error).should.be.true;
         });
 
         it("should have empty `_criticalCodes`", () => {
@@ -54,9 +54,9 @@ describe("YepError", function () {
         });
     });
 
-    describe("when creating an YepError w/ a key", () => {
+    describe("when creating an TError w/ a key", () => {
         beforeEach(() => {
-            this.error = new YepError("UNKNOWN");
+            this.error = new TError("UNKNOWN");
         });
 
         it("should be an UNKNOWN error", () => {
@@ -71,8 +71,8 @@ describe("YepError", function () {
             this.error.details.should.eql({});
         });
 
-        it("should be a YepError", () => {
-            YepError.isYepError(this.error, "UNKNOWN").should.be.true;
+        it("should be a TError", () => {
+            TError.isTError(this.error, "UNKNOWN").should.be.true;
         });
     });
 
@@ -81,7 +81,7 @@ describe("YepError", function () {
             var details = { isFoo: true };
             var message = "Oops. My bad :(";
 
-            this.error = new YepError("UNKNOWN", { details, message });
+            this.error = new TError("UNKNOWN", { details, message });
             this.errorInfo = { details, message };
         });
 
@@ -97,22 +97,22 @@ describe("YepError", function () {
             this.error.details.should.eql(this.errorInfo.details);
         });
 
-        it("should be a YepError", () => {
-            YepError.isYepError(this.error, "UNKNOWN").should.be.true;
+        it("should be a TError", () => {
+            TError.isTError(this.error, "UNKNOWN").should.be.true;
         });
     });
 
-    describe("when extending YepError", () => {
+    describe("when extending TError", () => {
         beforeEach(() => {
             var Errors = new Enum("UNKNOWN", "DOH", "FOO", "BAR", "BAZ");
 
-            class CustomError extends YepError {
+            class CustomError extends TError {
                 get title() { return "CustomError"; }
                 get _criticalCodes() { return [Errors.DOH, Errors.BAZ]; }
                 static get groupCode() { return 5000; }
                 static get Errors() { return Errors; }
                 static isCustomError(err, key) {
-                    return YepError.isYepError(err, key, CustomError);
+                    return TError.isTError(err, key, CustomError);
                 }
             }
 
@@ -158,10 +158,10 @@ describe("YepError", function () {
         });
     });
 
-    describe("when creating an YepError w/ an Error w/o opts", () => {
+    describe("when creating an TError w/ an Error w/o opts", () => {
         beforeEach(() => {
             this.originalError = new Error("Error message!");
-            this.error = new YepError(this.originalError);
+            this.error = new TError(this.originalError);
         });
 
         it("should be an UNKNOWN error", () => {
@@ -177,20 +177,20 @@ describe("YepError", function () {
             this.error.details.originalError.should.eql(this.originalError);
         });
 
-        it("should be a YepError", () => {
-            YepError.isYepError(this.error, "UNKNOWN").should.be.true;
+        it("should be a TError", () => {
+            TError.isTError(this.error, "UNKNOWN").should.be.true;
         });
 
         it("should output the proper string", () => {
-            String(this.error).should.equal("YepError#UNKNOWN: " + this.originalError.message);
+            String(this.error).should.equal("TError#UNKNOWN: " + this.originalError.message);
         });
     });
 
-    describe("when creating an YepError w/ an Error and opts", () => {
+    describe("when creating an TError w/ an Error and opts", () => {
         beforeEach(() => {
             this.originalError = new Error("Error message!");
             this.errorOpts = { message: "Horrible error!", details: { isFatal: false } };
-            this.error = new YepError(this.originalError, this.errorOpts);
+            this.error = new TError(this.originalError, this.errorOpts);
         });
 
         it("should be an UNKNOWN error", () => {
@@ -205,8 +205,8 @@ describe("YepError", function () {
             this.error.details.should.eql(this.errorOpts.details);
         });
 
-        it("should be a YepError", () => {
-            YepError.isYepError(this.error, "UNKNOWN").should.be.true;
+        it("should be a TError", () => {
+            TError.isTError(this.error, "UNKNOWN").should.be.true;
         });
     });
 });
