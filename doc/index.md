@@ -1,15 +1,15 @@
 # docs
 
 ## quick links
-- [Why YepError?](#why)
-- [API](#yeperror-api)
-- [YepError.register decorator](./decorator.md)
+- [Why TError?](#why)
+- [API](#TError-api)
+- [TError.register decorator](./decorator.md)
 
 ## Why
-Errors can be thrown at any level/layer of the application. To make the job of catching errors simpler, a consistent api is provided thru YepError. This includes an error code, and queries as to the type of message and any details.
+Errors can be thrown at any level/layer of the application. To make the job of catching errors simpler, a consistent api is provided thru TError. This includes an error code, and queries as to the type of message and any details.
 
 ```typescript
-interface YepError {
+interface TError {
     title: string;
     name: string;
     message: string;
@@ -19,11 +19,11 @@ interface YepError {
     isCritical: boolean;
     static groupCode: number;
     static Errors: Enumit;
-    static isYepError(error: Error, key: string, ErrorClass: Class);
+    static isTError(error: Error, key: string, ErrorClass: Class);
 }
 ```
 
-## YepError Api
+## TError Api
 
 - `title` - The display name of the error class
 - `name` - Display name plus the error code. Used by uncaught error handling.
@@ -37,12 +37,12 @@ interface YepError {
     ```
 
 ## Extending
-When extending YepError you must provide the following
+When extending TError you must provide the following
 - static `groupCode` property that is unique.
 - static `Errors` enum for your custom error types.
 - static `isMyCustomError` method.
 - override the title property.
 - If you have critical codes, override the `_criticalCodes` property.
 
-__You should use the provided the [`YepError.register` decorator](./decorator.md) when subclassing to remove boilerplate code.__
+__You should use the provided the [`TError.register` decorator](./decorator.md) when subclassing to remove boilerplate code.__
 

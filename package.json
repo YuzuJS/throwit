@@ -32,10 +32,10 @@
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git://github.com/YuzuJS/yep-errors.git"
+    "url": "git://github.com/YuzuJS/throwit.git"
   },
   "bugs": {
-    "url": "https://github.com/YuzuJS/yep-errors/issues"
+    "url": "https://github.com/YuzuJS/throwit/issues"
   },
-  "homepage": "https://github.com/YuzuJS/yep-errors"
+  "homepage": "https://github.com/YuzuJS/throwit"
 }

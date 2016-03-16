@@ -4,7 +4,7 @@ Critical errors are errors that contain an error code that should not be handled
 
 A perfect example of a critical error is when the auth token is no longer valid, and the session has expired. The local context has no meaning because the application state needs to be reset (user logged out, and shown the welcome sign in screen).
 
-The base class `YepError` returns an empty array when asked for the critical error codes (A protected getter: `_criticalCodes`). This protected getter is used by the `isCritical` public boolean getter.
+The base class `TError` returns an empty array when asked for the critical error codes (A protected getter: `_criticalCodes`). This protected getter is used by the `isCritical` public boolean getter.
 
 ## how to declare your critical codes
 

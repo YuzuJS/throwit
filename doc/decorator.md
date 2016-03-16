@@ -1,14 +1,14 @@
-# yep-error decorator
+# throwit decorator
 
-When subclassing YepError, most of the code needed to implement the child class is boilerplate code. To make extending YepError easier, a decorator is exposed on the YepError as `YepError.register`
+When subclassing TError, most of the code needed to implement the child class is boilerplate code. To make extending TError easier, a decorator is exposed on the TError as `TError.register`
 
 ```typescript
-interface YepError {
+interface TError {
     // decorator exposed on static class.
-    static register(groupdCode: Number, opts: YepErrorRegistration);
+    static register(groupdCode: Number, opts: TErrorRegistration);
 }
 
-interface YepErrorRegistration {
+interface TErrorRegistration {
     title: string;
     Errors: Enumit;
 }
@@ -16,17 +16,18 @@ interface YepErrorRegistration {
 
 ## Example Usage (AuthError)
 ``` js
-import { YepError } from "@yuzu/yep-errors";
+import { TError } from "throwit";
 import Enum from "enumit";
 
 const GROUP_CODE = 200;
 
-var Errors = new Enum("UNKNOWN",
-                      "INVALID_CREDENTIALS", "INVALID_TOKEN", "MISSING_TOKEN_FIELDS",
-                      "SIGN_IN_CONFLICT", "SESSION_SUSPENDED", "NOT_AUTHENTICATED");
+var Errors = new TError.Enum(
+    "UNKNOWN", "INVALID_CREDENTIALS", "INVALID_TOKEN", "MISSING_TOKEN_FIELDS",
+    "SIGN_IN_CONFLICT", "SESSION_SUSPENDED", "NOT_AUTHENTICATED"
+);
 
-@YepError.register(GROUP_CODE, { title: "AuthError", Errors })
-export default class AuthError extends YepError {
+@TError.register(GROUP_CODE, { title: "AuthError", Errors })
+export default class AuthError extends TError {
     // any additional custom methods unique to this class can live here
 }
 ```
@@ -47,6 +48,6 @@ AuthError.isAuthError(pretendError) // returns true
 ## There's more!
 
 In addition to ease of use, the decorator memoizes all error classes, which can be referenced with the 
-`YepErrors.allErrors` static property and can be easily seen by going to the following route in your url bar: 
+`TErrors.allErrors` static property and can be easily seen by going to the following route in your url bar: 
 
 `http://mdr.localtest.me:9000/#/errors`
