@@ -1,4 +1,3 @@
-import Enum from "enumit";
 import TError from "../lib/TError";
 
 describe("TError", function () {
@@ -104,7 +103,7 @@ describe("TError", function () {
 
     describe("when extending TError", () => {
         beforeEach(() => {
-            var Errors = new Enum("UNKNOWN", "DOH", "FOO", "BAR", "BAZ");
+            var Errors = new TError.Enum("UNKNOWN", "DOH", "FOO", "BAR", "BAZ");
 
             class CustomError extends TError {
                 get title() { return "CustomError"; }
