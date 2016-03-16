@@ -1,7 +1,7 @@
 {
   "name": "throwit",
-  "version": "0.5.2",
-  "description": "A standard and base error class.",
+  "version":"0.6.0",
+  "description": "A standard base error class.",
   "dependencies": {
     "q": "^1.4.1",
     "enumit": ">= 0.1.2"
